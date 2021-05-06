@@ -15,10 +15,13 @@ class MainScreen extends StatelessWidget {
                   DrawerHeader(
                     child: Image.asset("assets/images/logo.png"),
                   ),
-                  ListTile(
-                    leading: SvgPicture.asset("assets/icons/menu_dashbord.svg", color: Colors.white,),
-                    title: Text("Dashboard"),
-                  )
+                  DraweListTile(title: "Dashboard", svgSrc: "assets/icons/menu_dashbord.svg", press: (){}),
+                  DraweListTile(title: "Dashboard", svgSrc: "assets/icons/menu_dashbord.svg", press: (){}),
+                  DraweListTile(title: "Dashboard", svgSrc: "assets/icons/menu_dashbord.svg", press: (){}),
+                  DraweListTile(title: "Dashboard", svgSrc: "assets/icons/menu_dashbord.svg", press: (){}),
+                  DraweListTile(title: "Dashboard", svgSrc: "assets/icons/menu_dashbord.svg", press: (){}),
+                  DraweListTile(title: "Dashboard", svgSrc: "assets/icons/menu_dashbord.svg", press: (){}),
+                  DraweListTile(title: "Dashboard", svgSrc: "assets/icons/menu_dashbord.svg", press: (){}),
                 ],
               ),
             ),
@@ -32,6 +35,29 @@ class MainScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class DraweListTile extends StatelessWidget {
+  
+  const DraweListTile({
+    Key key, 
+    @required this.title, 
+    @required this.svgSrc, 
+    @required this.press,
+  }) : super(key: key);
+
+  final String title, svgSrc;
+  final VoidCallback press;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: press,
+      horizontalTitleGap: 0.0,
+      leading: SvgPicture.asset(svgSrc, color: Colors.white54, height: 16,),
+      title: Text(title, style: TextStyle(color: Colors.white54)),
     );
   }
 }
