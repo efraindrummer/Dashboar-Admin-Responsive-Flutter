@@ -1,3 +1,4 @@
+import 'package:admin/screens/dashboard/dashboard_screen.dart';
 import 'package:admin/screens/main/components/side_menu.dart';
 import 'package:flutter/material.dart';
 
@@ -13,10 +14,10 @@ class MainScreen extends StatelessWidget {
               child: SideMenu(),
             ),
             Expanded(
-              //aqui se usa solo 5/6 dfe la pantalla completa
+              //aqui se usa solo 5/6 de la pantalla completa
               flex: 5,
               child: Container(
-                color: Colors.blue,
+                child: DashboardScreen(),
               ),
             ),
           ],
