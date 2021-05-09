@@ -1,5 +1,6 @@
 import 'package:admin/constants.dart';
 import 'package:admin/screens/dashboard/components/header.dart';
+import 'package:admin/screens/dashboard/components/my_fields.dart';
 import 'package:admin/screens/dashboard/components/storage_details.dart';
 import 'package:flutter/material.dart';
 
@@ -18,10 +19,7 @@ class DashboardScreen extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 flex: 5,
-                child: Container(
-                  height: 500,
-                  color: Colors.white,
-                ),
+                child: MyFields()
               ),
               SizedBox(width: defaultPadding),
               StorageDetails()
