@@ -35,9 +35,10 @@ class MyFields extends StatelessWidget {
               itemCount: demoMyFiels.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 4, 
-                crossAxisSpacing: defaultPadding
+                crossAxisSpacing: defaultPadding,
+                childAspectRatio: 1.0
               ),
-              itemBuilder: (context, index) => FieldInfoCard(info: demoMyFiels[index])
+              itemBuilder: (context, index) => FieldInfoCard(info: demoMyFiels[index]),
             ),
       ],
     );
@@ -62,6 +63,8 @@ class FieldInfoCard extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -90,7 +93,27 @@ class FieldInfoCard extends StatelessWidget {
             maxLines: 1, 
             overflow: TextOverflow.ellipsis
           ),
-          ProgressLines(info: info)
+          ProgressLines(
+            color: info.color, 
+            percentaje: info.percentage
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                "${info.numOfFiels} Files",
+                style: Theme.of(context).textTheme.caption.copyWith(
+                  color: Colors.white70
+                ),
+              ),
+              Text(
+                info.totalStorage,
+                style: Theme.of(context).textTheme.caption.copyWith(
+                  color: Colors.white
+                ),
+              )
+            ],
+          )
         ],
       ),
     );
@@ -100,10 +123,12 @@ class FieldInfoCard extends StatelessWidget {
 class ProgressLines extends StatelessWidget {
   const ProgressLines({
     Key key,
-    @required this.info,
+    this.color = primaryColor, 
+    @required this.percentaje,
   }) : super(key: key);
 
-  final CloudStorageInfo info;
+  final Color color;
+  final int percentaje;
 
   @override
   Widget build(BuildContext context) {
@@ -113,15 +138,15 @@ class ProgressLines extends StatelessWidget {
           width: double.infinity,
           height: 5,
           decoration: BoxDecoration(
-            color: info.color.withOpacity(0.1),
+            color: color.withOpacity(0.1),
             borderRadius: BorderRadius.all(Radius.circular(10))
           ),
         ),
         LayoutBuilder(builder: (context, constraints) => Container(
-          width: constraints.maxWidth * 0.5,
+          width: constraints.maxWidth * (percentaje / 100),
           height: 5,
           decoration: BoxDecoration(
-            color: info.color,
+            color: color,
             borderRadius: BorderRadius.all(Radius.circular(10))
           ),
         ))
