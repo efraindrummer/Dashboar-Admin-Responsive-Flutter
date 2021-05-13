@@ -19,7 +19,12 @@ class DashboardScreen extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 flex: 5,
-                child: MyFields()
+                child: Column(
+                  children: [
+                    MyFields(),
+                    SizedBox(height: defaultPadding)
+                  ],
+                )
               ),
               SizedBox(width: defaultPadding),
               StorageDetails()
