@@ -36,7 +36,7 @@ class MyFields extends StatelessWidget {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 4, 
                 crossAxisSpacing: defaultPadding,
-                childAspectRatio: 1.0
+                childAspectRatio: 1.4
               ),
               itemBuilder: (context, index) => FieldInfoCard(info: demoMyFiels[index]),
             ),
