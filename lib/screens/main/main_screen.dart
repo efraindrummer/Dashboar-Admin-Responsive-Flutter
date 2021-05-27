@@ -1,3 +1,4 @@
+import 'package:admin/responsive.dart';
 import 'package:admin/screens/dashboard/dashboard_screen.dart';
 import 'package:admin/screens/main/components/side_menu.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class MainScreen extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            if(Responsive.isDesktop(context)) 
             Expanded(
               //el flex esta por default en 1
               child: SideMenu(),
