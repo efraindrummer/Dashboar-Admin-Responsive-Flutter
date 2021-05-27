@@ -35,7 +35,10 @@ class MyFields extends StatelessWidget {
         ),
         SizedBox(height: defaultPadding),
         Responsive(
-          mobile: FieldInfoCardGridView(), 
+          mobile: FieldInfoCardGridView(
+            crossAxisCount: _size.width < 650 ? 2 : 4,
+            childAspectRatio: _size.width < 650 ? 1.3 : 1,
+          ), 
           tablet: FieldInfoCardGridView(),
           desktop: FieldInfoCardGridView(
             childAspectRatio: _size.width < 1400? 1.1 : 1.4
@@ -60,11 +63,13 @@ class FieldInfoCardGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: demoMyFiels.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount, 
         crossAxisSpacing: defaultPadding,
+        mainAxisSpacing: defaultPadding,
         childAspectRatio: childAspectRatio
       ),
       itemBuilder: (context, index) => FieldInfoCard(info: demoMyFiels[index]),
