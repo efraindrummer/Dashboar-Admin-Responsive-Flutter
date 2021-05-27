@@ -11,6 +11,9 @@ class MyFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final Size _size = MediaQuery.of(context).size;
+
     return Column(
       children: <Widget>[
         Row(
@@ -34,7 +37,9 @@ class MyFields extends StatelessWidget {
         Responsive(
           mobile: FieldInfoCardGridView(), 
           tablet: FieldInfoCardGridView(),
-          desktop: FieldInfoCardGridView()
+          desktop: FieldInfoCardGridView(
+            childAspectRatio: _size.width < 1400? 1.1 : 1.4
+          )
         ),
       ],
     );
